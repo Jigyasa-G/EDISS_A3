@@ -1,5 +1,0 @@
-http://a8885097a474648eaacd7ccd532b59cc-294309037.us-east-1.elb.amazonaws.com:80
-http://abd570a974a8b4b3faf5daa273a4cb1d-705904390.us-east-1.elb.amazonaws.com:80
-jigyasag
-jigyasatata2@gmail.com
-
