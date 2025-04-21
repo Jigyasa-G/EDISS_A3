@@ -1,1 +1,4 @@
-http://bookstore-dev-ExternalALB-2135620176.us-east-1.elb.amazonaws.com
+http://a8885097a474648eaacd7ccd532b59cc-294309037.us-east-1.elb.amazonaws.com:80 {web-bff-url}
+http://abd570a974a8b4b3faf5daa273a4cb1d-705904390.us-east-1.elb.amazonaws.com:80 {mobile-bff-url}
+{andrew-id}
+{email-id}
