@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: customer-service
+  namespace: bookstore-ns
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: customer-service
+  template:
+    metadata:
+      labels:
+        app: customer-service
+    spec:
+      containers:
+      - name: customer-service
+        # image: jigyasag/ediss-a2:customers-service-v1
+        image: jigyasag/ediss-a3-customer-service:v3    # use the tag built with Kafka
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
+        env:
+        - name: DB_HOST
+          value: "bookstore-db-dev.cluster-cd20i0i40rro.us-east-1.rds.amazonaws.com"
+        - name: DB_USER
+          value: "root"
+        - name: DB_PASSWORD
+          value: "edispass"
+        - name: DB_NAME
+          value: "bookstore"
+        - name: PORT
+          value: "3000"
+        - name: KAFKA_BOOTSTRAP
+          value: "3.129.102.184:9092,18.118.230.221:9093,3.130.6.49:9094"        # replace with the brokers from Canvas
+        - name: TOPIC
+          value: "jigyasag.customer.evt"   ## put andrew id later
+        livenessProbe:
+          httpGet:
+            path: /status
+            port: 3000
+          initialDelaySeconds: 30
+          periodSeconds: 10
+
+# remeber to : kubectl apply -f k8s/customer-service/deployment.yaml
+# kubectl rollout status deploy/customer-service -n bookstore-ns
