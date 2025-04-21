@@ -11,10 +11,10 @@ const connection = mysql.createConnection({
 
 connection.connect(err => {
   if (err) {
-    console.error('Error connecting to MySQL:', err);
+    console.error('Error connecting to MySQL(Book Service):', err);
     process.exit(1);
   }
-  console.log('Connected to MySQL');
+  console.log('Connected to MySQL(Book Service)');
 });
 
 module.exports = connection;
